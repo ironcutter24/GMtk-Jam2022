@@ -25,7 +25,8 @@ public class DiceBullet : MonoBehaviour
     private State currentState = State.Enemy;
     public State CurrentState { get => currentState; }
 
-    const int diceType = 6;
+    [SerializeField]
+    int diceType = 6;
     public int Type { get => diceType; }
 
     private int value = 1;

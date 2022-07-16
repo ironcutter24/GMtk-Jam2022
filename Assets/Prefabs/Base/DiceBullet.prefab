@@ -174,9 +174,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1953074021570800108}
   - component: {fileID: 1953074021570800109}
-  - component: {fileID: 8994193377573543104}
+  - component: {fileID: 2586065559220919911}
   m_Layer: 7
-  m_Name: Square
+  m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,7 +247,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8994193377573543104
+--- !u!61 &2586065559220919911
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,8 +343,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1953074021883496674}
   bulletSpeed: 6
-  shapeCollider: {fileID: 8994193377573543104}
+  shapeCollider: {fileID: 0}
   textMesh: {fileID: 2918889204325181682}
+  diceType: 6
   queueAnchorPoint: {fileID: 5357307195410922012}
 --- !u!1 &7951667596124094750
 GameObject:

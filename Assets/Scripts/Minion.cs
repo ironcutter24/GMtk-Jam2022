@@ -8,6 +8,10 @@ public class Minion : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject diceBulletPrefab;
 
+    [SerializeField]
+    private int minionType = 6;
+    public int Type { get => minionType; }
+
     private void Start()
     {
         Timing.RunCoroutine(_SpawnBullet().CancelWith(gameObject));
