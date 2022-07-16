@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     Transform trailTarget;
 
+
+    [SerializeField]
+    Transform bulletSpawnPoint;
+
+
     [Header("Parry")]
 
     [SerializeField]
@@ -100,7 +105,7 @@ public class Player : MonoBehaviour
     {
         if (queuedDices.Count <= 0) return;
 
-        var bullet = Instantiate(diceCollectionPrefab, transform.position, Quaternion.identity).GetComponent<DiceCollection>();
+        var bullet = Instantiate(diceCollectionPrefab, bulletSpawnPoint.transform.position, Quaternion.identity).GetComponent<DiceCollection>();
         for (int i = 0; i < queuedDices.Count; i++)
         {
             var dice = queuedDices[i].GetComponent<DiceBullet>();
