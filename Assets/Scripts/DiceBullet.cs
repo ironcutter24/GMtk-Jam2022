@@ -1,0 +1,93 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class DiceBullet : MonoBehaviour
+{
+    [SerializeField]
+    Rigidbody2D rb;
+
+    [SerializeField]
+    [Range(2f, 12f)]
+    float bulletSpeed = 6f;
+
+    [SerializeField]
+    Collider2D shapeCollider;
+
+    [SerializeField]
+    TextMeshProUGUI textMesh;
+
+    float trailSpeed = 16f;
+
+    public enum State { Enemy, Queued, Friendly }
+    private State currentState = State.Enemy;
+    public State CurrentState { get => currentState; }
+
+    const int diceType = 6;
+    public int Type { get => diceType; }
+
+    private int value = 1;
+    public int Value { get => value; }
+
+    public Transform QueueTarget { get; private set; }
+
+    public static HashSet<DiceBullet> Instances = new HashSet<DiceBullet>();
+
+    [SerializeField]
+    Transform queueAnchorPoint;
+    public Transform QueueAnchorPoint { get => queueAnchorPoint; }
+
+    private void Awake()
+    {
+        Instances.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        Instances.Remove(this);
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentState == State.Enemy)
+        {
+            rb.MovePosition(rb.position - (Vector2)transform.right * bulletSpeed * Time.deltaTime);
+        }
+        else
+        if (currentState == State.Queued)
+        {
+            transform.position = Vector2.Lerp(transform.position, QueueTarget.position, trailSpeed * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // spawn particles
+
+        if (currentState == State.Enemy)
+            Destroy(gameObject);
+    }
+
+    public void SetQueueState(Transform target)
+    {
+        shapeCollider.enabled = false;
+        QueueTarget = target;
+        currentState = State.Queued;
+    }
+
+    public static void RollAllDices()
+    {
+        foreach (var obj in Instances)
+        {
+            if (obj.currentState == State.Enemy)
+                obj.RollDice();
+        }
+    }
+
+    void RollDice()
+    {
+        value = Random.Range(1, diceType + 1);
+        textMesh.text = value.ToString();
+    }
+}
