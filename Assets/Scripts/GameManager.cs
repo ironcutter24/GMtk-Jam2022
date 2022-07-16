@@ -6,6 +6,8 @@ using MEC;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] float diceRollCooldown = 1f;
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,7 +23,7 @@ public class GameManager : Singleton<GameManager>
     {
         while (Game.IsIn(GameState.Game))
         {
-            yield return Timing.WaitForSeconds(1f);
+            yield return Timing.WaitForSeconds(diceRollCooldown);
             DiceBullet.RollAllDices();
         }
     }
