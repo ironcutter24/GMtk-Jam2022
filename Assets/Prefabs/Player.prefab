@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3532635354006063245}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ParryGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8832723720432613873}
   - component: {fileID: 5564803023740669027}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RoundParry
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3518277030200387340}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrailTarget
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4409279932649427935}
   - component: {fileID: 8148224705146180274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7972400358459036709}
   - component: {fileID: 1723297442670917179}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShipGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5276798098218498815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Parry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 7376755791730145374}
   - component: {fileID: 5782688048069620022}
   - component: {fileID: 5931695371421563935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5783607165132588353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ParryGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6603978198477402669}
   - component: {fileID: 2160068640579467398}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainParry
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834174781749038585}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3763883632660068050}
   - component: {fileID: 4021206132340282145}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 9164761727890552358}
   - component: {fileID: 9164761727890552361}
   - component: {fileID: 9164761727890552360}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

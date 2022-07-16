@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using MEC;
 
 public class DiceBullet : MonoBehaviour
 {
@@ -61,12 +62,25 @@ public class DiceBullet : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // spawn particles
-
-        if (currentState == State.Enemy)
+        if(collision.gameObject.layer == 8)  // "Player" layer
+        {
+            Debug.Log("Player hit by: " + gameObject.name);
+            collision.gameObject.GetComponentInParent<Player>().PopLastElement();
             Destroy(gameObject);
+        }
+    }
+
+    IEnumerator<float> _CheckDistance()
+    {
+        while (currentState == State.Enemy)
+        {
+            yield return Timing.WaitForSeconds(1f);
+
+            if (Mathf.Abs(transform.position.x) > 20f)
+                Destroy(gameObject);
+        }
     }
 
     public void SetQueueState(Transform target)

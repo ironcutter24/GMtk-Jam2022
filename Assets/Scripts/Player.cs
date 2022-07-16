@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         queuedDices.Add(newDice.gameObject);
     }
 
-    void PopLastElement()
+    public void PopLastElement()
     {
         if (queuedDices.Count <= 0)
         {
@@ -161,20 +161,6 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + inputManager.Directional * speed * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Player hit by: " + collision.gameObject.name);
-
-        if (collision.gameObject.layer == 7)  // "Bullet" layer
-        {
-            var diceState = collision.gameObject.GetComponentInParent<DiceBullet>().CurrentState;
-            if (diceState == DiceBullet.State.Enemy)
-            {
-                PopLastElement();
-            }
-        }
     }
 
     private void OnDrawGizmos()
