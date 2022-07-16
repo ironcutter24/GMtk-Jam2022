@@ -10,7 +10,12 @@ public class SplinePlacer : PathSceneTool
     public float spacing = 3;
     
     const float minSpacing = .1f;
-    
+
+    private void Start()
+    {
+        Generate();
+    }
+
     void Generate()
     {
         if (pathCreator != null && prefab != null && holder != null)

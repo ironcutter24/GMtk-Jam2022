@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MEC;
 
 public class DiceCollection : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class DiceCollection : MonoBehaviour
     [SerializeField] float speed = 5f;
 
     List<DiceData> diceDatas = new List<DiceData>();
+
+    private void Start()
+    {
+        Timing.RunCoroutine(_CheckDistance().CancelWith(gameObject));
+    }
 
     public void AddDice(DiceData newDice)
     {
@@ -19,13 +25,29 @@ public class DiceCollection : MonoBehaviour
         rb.MovePosition(rb.position + (Vector2)transform.right * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public bool PopDices(List<DiceData> targetDices)
     {
-        if (collision.gameObject.layer == 6)  // "Enemy" layer
-        {
-            var obj = collision.gameObject.GetComponent<Minion>();
+        Debug.Log("Dices data requested!");
 
-            
+        foreach (var targetDice in targetDices)
+        {
+            foreach (var sampleDice in diceDatas)
+            {
+                if(sampleDice.type == targetDice.type)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    IEnumerator<float> _CheckDistance()
+    {
+        while (gameObject.activeInHierarchy)
+        {
+            yield return Timing.WaitForSeconds(1f);
+
+            if (Mathf.Abs(transform.position.x) > 20f)
+                Destroy(gameObject);
         }
     }
 }

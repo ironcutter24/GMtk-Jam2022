@@ -43,6 +43,7 @@ public class DiceBullet : MonoBehaviour
     private void Awake()
     {
         Instances.Add(this);
+        Timing.RunCoroutine(_CheckDistance().CancelWith(gameObject));
     }
 
     private void OnDestroy()

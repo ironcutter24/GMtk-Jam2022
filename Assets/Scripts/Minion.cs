@@ -24,6 +24,15 @@ public class Minion : MonoBehaviour
             Debug.Log("Player hit by: " + gameObject.name);
             collision.gameObject.GetComponentInParent<Player>().PopLastElement();
         }
+
+        if (collision.gameObject.layer == 9)  // "FriendlyBullet" layer
+        {
+            var diceColl = collision.gameObject.GetComponentInParent<DiceCollection>();
+            if (diceColl.PopDices(new List<DiceData> { new DiceData(Type, 0) }))
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     IEnumerator<float> _SpawnBullet()
