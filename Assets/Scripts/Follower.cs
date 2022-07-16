@@ -16,6 +16,8 @@ public class Follower : MonoBehaviour
         {
             // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
             pathCreator.pathUpdated += OnPathChanged;
+
+            OnPathChanged();
         }
     }
 
@@ -34,5 +36,10 @@ public class Follower : MonoBehaviour
     void OnPathChanged()
     {
         distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
+    }
+
+    public void SetPath(PathCreator path)
+    {
+        pathCreator = path;
     }
 }
