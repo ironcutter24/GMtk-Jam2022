@@ -99,7 +99,7 @@ Material:
     - _ColorSwapRedLuminosity: 0.5
     - _Contrast: 1
     - _CullingOption: 0
-    - _DistortAmount: 0.1
+    - _DistortAmount: 0.02
     - _DistortTexXSpeed: 1
     - _DistortTexYSpeed: 1
     - _EditorDrawers: 6
