@@ -50,7 +50,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7677a3009486c144899dd36fc66b50c9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5412f1dd88236584e9b01a23abadf22f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineDistortTex:

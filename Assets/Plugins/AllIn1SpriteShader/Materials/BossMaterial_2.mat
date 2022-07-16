@@ -10,8 +10,8 @@ Material:
   m_Name: BossMaterial_2
   m_Shader: {fileID: 4800000, guid: a53f4bb29f3644b43b5075c6dcfecb32, type: 3}
   m_ShaderKeywords: ALPHAOUTLINE_ON BLURISHD_ON BLUR_ON FADE_ON GHOST_ON GLOWTEX_ON
-    GLOW_ON OUTBASE8DIR_ON OUTBASEPIXELPERF_ON OUTBASE_ON POSTERIZEOUTLINE_ON RADIALGRADIENT_ON
-    _BLURHD_ON _GRADISRADIAL_ON _POSTERIZEOUTLINE_ON
+    GLOW_ON GRADIENT_ON OUTBASE8DIR_ON OUTBASEPIXELPERF_ON OUTBASE_ON POSTERIZEOUTLINE_ON
+    RADIALGRADIENT_ON _BLURHD_ON _GRADISRADIAL_ON _POSTERIZEOUTLINE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 0.83
+    - _Alpha: 0.12
     - _AlphaCutoffValue: 0.9
     - _AlphaOutlineBlend: 1
     - _AlphaOutlineGlow: 100
@@ -117,11 +117,11 @@ Material:
     - _GhostTransparency: 0.84
     - _GlitchAmount: 3
     - _GlitchSize: 1
-    - _Glow: 58
-    - _GlowGlobal: 21
+    - _Glow: 6
+    - _GlowGlobal: 2.8
     - _GlowTexUsed: 0
-    - _GradBlend: 0.35
-    - _GradBoostX: 1.07
+    - _GradBlend: 1
+    - _GradBoostX: 2.21
     - _GradBoostY: 1.2
     - _GradIsRadial: 1
     - _GrassManualAnim: 1
@@ -221,8 +221,8 @@ Material:
     - _ZWrite: 0
     - _ZoomUvAmount: 0.5
     m_Colors:
-    - _AlphaOutlineColor: {r: 1, g: 0.20461825, b: 0, a: 1}
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _AlphaOutlineColor: {r: 0.03773582, g: 0.025691211, b: 0.022605892, a: 1}
+    - _Color: {r: 0.3018868, g: 0.14097543, b: 0.28105992, a: 1}
     - _ColorChangeNewCol: {r: 1, g: 1, b: 0, a: 1}
     - _ColorChangeNewCol2: {r: 1, g: 1, b: 0, a: 1}
     - _ColorChangeNewCol3: {r: 1, g: 1, b: 0, a: 1}
@@ -233,8 +233,8 @@ Material:
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
     - _FadeBurnColor: {r: 0.34509802, g: 1, b: 0.41231477, a: 1}
-    - _GlowColor: {r: 0.990566, g: 0.32062384, b: 0.1448469, a: 1}
-    - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
+    - _GlowColor: {r: 0.4811321, g: 0.024964403, b: 0.39723268, a: 1}
+    - _GradBotLeftCol: {r: 0, g: 0, b: 0, a: 1}
     - _GradBotRightCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradTopLeftCol: {r: 1, g: 0, b: 0, a: 1}
     - _GradTopRightCol: {r: 1, g: 0, b: 0, a: 1}
