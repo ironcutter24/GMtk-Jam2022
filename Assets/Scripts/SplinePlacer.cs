@@ -52,9 +52,13 @@ public class SplinePlacer : PathSceneTool
                 Vector3 point = path.GetPointAtDistance(dst);
                 Quaternion rot = Quaternion.identity;  // path.GetRotationAtDistance(dst);
 
-                var obj = Instantiate(prefabs[counter % prefabs.Count], point, rot, holder.transform);
-                Follower follower = obj.GetComponent<Follower>();
-                follower.SetPath(pathCreator);
+                int index = counter % prefabs.Count;
+                if (prefabs[index] != null)
+                {
+                    var obj = Instantiate(prefabs[index], point, rot, holder.transform);
+                    Follower follower = obj.GetComponent<Follower>();
+                    follower.SetPath(pathCreator);
+                }
 
                 dst += spacing;
                 counter++;
