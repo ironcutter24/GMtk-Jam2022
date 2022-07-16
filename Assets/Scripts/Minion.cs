@@ -24,6 +24,6 @@ public class Minion : MonoBehaviour
 
     void LaunchDice()
     {
-        Instantiate(diceBulletPrefab, spawnPoint);
+        Instantiate(diceBulletPrefab, spawnPoint.position, Quaternion.identity);
     }
 }
