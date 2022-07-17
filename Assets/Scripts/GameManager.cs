@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] List<Scene> scenes = new List<Scene>();
+    [SerializeField] List<string> sceneNames = new List<string>();
     [SerializeField] int currentScene = 0;
 
     protected override void Awake()
@@ -18,9 +18,9 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        for (int i = 0; i < scenes.Count; i++)
+        for (int i = 0; i < sceneNames.Count; i++)
         {
-            if (scenes[i] == SceneManager.GetActiveScene())
+            if (sceneNames[i] == SceneManager.GetActiveScene().name)
                 currentScene = i;
         }
     }
@@ -28,17 +28,17 @@ public class GameManager : Singleton<GameManager>
     public void LoadNextScene()
     {
         currentScene++;
-        LoadScene(scenes[currentScene]);
+        LoadScene(sceneNames[currentScene]);
     }
 
     public void ReloadCurrentScene()
     {
-        LoadScene(scenes[currentScene]);
+        LoadScene(sceneNames[currentScene]);
     }
 
-    void LoadScene(Scene sceneToLoad)
+    void LoadScene(string sceneToLoad)
     {
-        SceneManager.LoadScene(sceneToLoad.name);
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
 

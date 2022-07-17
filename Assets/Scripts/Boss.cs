@@ -6,7 +6,31 @@ using MEC;
 public class Boss : MonoBehaviour
 {
     [SerializeField]
-    List<DiceData> dices = new List<DiceData>();
+    GameObject FourSidesPrefabs, SixSidesPrefab, EightSidesPrefab;
+
+    [SerializeField, Range(1, 4)]
+    int numberOfDices = 1;
+
+    [Space]
+
+    [SerializeField]
+    List<Transform> presetTwo = new List<Transform>();
+
+    [SerializeField]
+    List<Transform> presetThree = new List<Transform>();
+
+    [SerializeField]
+    List<Transform> presetFour = new List<Transform>();
+
+    [Space]
+
+    [SerializeField]
+    List<BossDice> dices = new List<BossDice>();
+
+    private void Start()
+    {
+        InitDices();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,9 +50,11 @@ public class Boss : MonoBehaviour
             int count = dices.Count;
             while (i < count)
             {
-                if (diceColl.PopDices(dices[i]))
+                if (diceColl.PopDices(dices[i].DiceData))
                 {
+                    var obj = dices[i];
                     dices.RemoveAt(i);
+                    Destroy(obj);
                     count--;
                 }
                 else
@@ -52,5 +78,38 @@ public class Boss : MonoBehaviour
 
         GameManager.Instance.LoadNextScene();
         yield break;
+    }
+
+    void InitDices()
+    {
+        switch (numberOfDices)
+        {
+            case 1: CreateDices(new List<Transform> { transform }); break;
+            case 2: CreateDices(presetTwo);     break;
+            case 3: CreateDices(presetThree);   break;
+            case 4: CreateDices(presetFour);    break;
+            default:    throw new System.Exception("Incorrect boss dice number");
+        }
+    }
+
+    void CreateDices(List<Transform> targets)
+    {
+        foreach (var t in targets)
+        {
+            var obj = Instantiate(GetRandomDiceTypePrefab(), transform);
+            var script = obj.GetComponent<BossDice>();
+            script.SetValue(Random.Range(1, DiceData.GetSidesOf(script.Type) + 1));
+        }
+    }
+
+    GameObject GetRandomDiceTypePrefab()
+    {
+        switch(Random.Range(0, 3))
+        {
+            case 0:     return FourSidesPrefabs;
+            case 1:     return SixSidesPrefab;
+            case 2:     return EightSidesPrefab;
+            default:    throw new System.Exception("Random dice generation error");
+        }
     }
 }

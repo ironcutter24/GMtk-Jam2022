@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8b838bb0c0c564a856a673d5413d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenes: []
+  sceneNames:
+  - TestDam
   currentScene: 0
 --- !u!1 &5043836511050389517
 GameObject:

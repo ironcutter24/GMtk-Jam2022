@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 1953074021883496677, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
       propertyPath: shapeCollider
       value: 
-      objectReference: {fileID: 5170893642073655186}
+      objectReference: {fileID: 0}
     - target: {fileID: 2586065559220919911, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
       propertyPath: m_Size.x
       value: 3.6
@@ -147,10 +147,39 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1953074021883496677, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+    - {fileID: 1953074021883496674, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+    - {fileID: 2586065559220919911, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
---- !u!61 &5170893642073655186 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2586065559220919911, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+--- !u!1 &9168078472234701073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1953074021883496676, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
   m_PrefabInstance: {fileID: 7215110416724941301}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5521627506829570311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2918889204325181682, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+  m_PrefabInstance: {fileID: 7215110416724941301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6627363202542906388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168078472234701073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6755fbe79d6e7db4d8575932741b9292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 5521627506829570311}
+  type: 2
+  value: 1
