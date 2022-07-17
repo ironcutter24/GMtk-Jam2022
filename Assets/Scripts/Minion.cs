@@ -15,9 +15,16 @@ public class Minion : MonoBehaviour
     [SerializeField]
     private float shootCooldown = 2f;
 
+    [SerializeField]
+    SpriteRenderer gfx, aura;
+
+    [SerializeField]
+    Collider2D shapeCollider;
+
+    CoroutineHandle shootCoroutine;
     private void Start()
     {
-        Timing.RunCoroutine(_SpawnBullet().CancelWith(gameObject));
+        shootCoroutine = Timing.RunCoroutine(_SpawnBullet().CancelWith(gameObject));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +40,7 @@ public class Minion : MonoBehaviour
             var diceColl = collision.gameObject.GetComponentInParent<DiceCollection>();
             if (diceColl.PopDices(new DiceData(Type, 0)))
             {
-                Destroy(gameObject);
+                TurnOff();
             }
         }
     }
@@ -50,5 +57,46 @@ public class Minion : MonoBehaviour
     void LaunchDice()
     {
         Instantiate(diceBulletPrefab, spawnPoint.position, Quaternion.identity);
+    }
+
+    void TurnOff()
+    {
+        Timing.KillCoroutines(shootCoroutine);
+        shapeCollider.enabled = false;
+
+        LeanTween.value(gameObject, 1f, .2f, .2f).setOnUpdate((float val) => {
+            Debug.Log("tweened val:" + val);
+            gfx.material.SetFloat("_Alpha", val);
+        });
+
+        LeanTween.value(gameObject, 1f, -.1f, .2f).setOnUpdate((float val) => {
+            Debug.Log("tweened val:" + val);
+            aura.material.SetFloat("_FadeAmount", val);
+        });
+
+        Timing.RunCoroutine(_ReviveCooldown().CancelWith(gameObject));
+    }
+
+    void TurnOn()
+    {
+        shapeCollider.enabled = true;
+
+        LeanTween.value(gameObject, .2f, 1f, .2f).setOnUpdate((float val) => {
+            Debug.Log("tweened val:" + val);
+            gfx.material.SetFloat("_Alpha", val);
+        });
+
+        LeanTween.value(gameObject, -.1f, 1f, .2f).setOnUpdate((float val) => {
+            Debug.Log("tweened val:" + val);
+            aura.material.SetFloat("_FadeAmount", val);
+        });
+
+        shootCoroutine = Timing.RunCoroutine(_SpawnBullet().CancelWith(gameObject));
+    }
+
+    IEnumerator<float> _ReviveCooldown()
+    {
+        yield return Timing.WaitForSeconds(10f);
+        TurnOn();
     }
 }
