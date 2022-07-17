@@ -23,7 +23,6 @@ public class Boss : MonoBehaviour
 
             int i = 0;
             int count = dices.Count;
-
             while (i < count)
             {
                 if (diceColl.PopDices(dices[i]))
@@ -35,6 +34,11 @@ public class Boss : MonoBehaviour
                 {
                     i++;
                 }
+            }
+
+            if(dices.Count <= 0)
+            {
+                Destroy(this.gameObject);
             }
         }
     }

@@ -257,8 +257,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1381173659
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 45a1def69f0594e40a62f2d9eff89caf, type: 3}
   m_Color: {r: 0.6120558, g: 0, b: 1, a: 1}
@@ -372,8 +372,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1381173659
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -547,9 +547,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1381173659
+  m_SortingLayer: 1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 7677a3009486c144899dd36fc66b50c9, type: 3}
   m_Color: {r: 0, g: 0.7511432, b: 1, a: 1}
   m_FlipX: 0
@@ -747,8 +747,9 @@ MonoBehaviour:
   rb: {fileID: 9164761727890552361}
   speed: 10
   diceCollectionPrefab: {fileID: 7658256293952441248, guid: 70c14860feb0deb4c9b68b7fbf71332e, type: 3}
-  trailTarget: {fileID: 3518277030200387340}
   bulletSpawnPoint: {fileID: 834174781749038585}
+  trailTarget: {fileID: 3518277030200387340}
+  maxTrailLenght: 3
   parryDuration: 0.2
   parryCooldown: 0.4
   parryMask:
