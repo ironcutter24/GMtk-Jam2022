@@ -94,7 +94,7 @@ public class Boss : MonoBehaviour
     {
         foreach (var t in targets)
         {
-            var obj = Instantiate(GetRandomDiceTypePrefab(), transform);
+            var obj = Instantiate(GetRandomDiceTypePrefab(), t);
             var script = obj.GetComponent<BossDice>();
             script.SetValue(Random.Range(1, DiceData.GetSidesOf(script.Type) + 1));
         }
