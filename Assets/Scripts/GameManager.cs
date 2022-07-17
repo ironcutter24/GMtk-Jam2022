@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utility.Patterns;
 using MEC;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] float diceRollCooldown = 1f;
+
+    [SerializeField] List<Scene> scenes = new List<Scene>();
+    [SerializeField] int currentScene = 0;
 
     protected override void Awake()
     {
@@ -17,6 +21,17 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         Timing.RunCoroutine(_RollCountdown().CancelWith(gameObject));
+    }
+
+    public void PlayerWin()
+    {
+        currentScene++;
+        SceneManager.LoadScene(scenes[currentScene].name);
+    }
+
+    public void PlayerLose()
+    {
+        SceneManager.LoadScene(scenes[currentScene].name);
     }
 
     IEnumerator<float> _RollCountdown()

@@ -38,7 +38,7 @@ public class Boss : MonoBehaviour
 
             if(dices.Count <= 0)
             {
-                Destroy(this.gameObject);
+                GameManager.Instance.PlayerLose();
             }
         }
     }
