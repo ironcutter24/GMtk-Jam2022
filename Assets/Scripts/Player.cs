@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MEC;
-using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -45,9 +44,26 @@ public class Player : MonoBehaviour
     List<ParryData> parryDatas = new List<ParryData>();
 
 
+    [Header("Materials")]
+
+    [SerializeField]
+    Material parryUseMat;
+
+    [SerializeField]
+    Material parryRechargeMat;
+
+
     private void Start()
     {
         inputManager = CustomInput.InputManager.Instance;
+
+        /*
+        LeanTween.value(gameObject, -.1f, 1f, 5f).setOnUpdate((float val) => {
+            Debug.Log("tweened val:" + val);
+            parryUseMat.SetFloat("_FadeAmount", val);
+            parryRechargeMat.SetFloat("_FadeAmount", val);
+        });
+        */
     }
 
     bool shieldState = false;
@@ -63,13 +79,25 @@ public class Player : MonoBehaviour
 
     IEnumerator<float> _Shield()
     {
+        const float parryReloadDuration = .1f;
+
         shieldState = true;
 
-        foreach (var parry in parryDatas)
-        {
-            parry.gfx.transform.localScale = Vector3.one * parry.radius;
-            parry.gfx.SetActive(true);
-        }
+        // Shield gfx tweening
+        LeanTween.value(gameObject, 1f, -.1f, parryDuration * .5f).setOnUpdate((float val) => {
+            Debug.Log("tweened val:" + val);
+            parryUseMat.SetFloat("_FadeAmount", val);
+        });
+
+        LeanTween.value(gameObject, -.1f, 1f, parryReloadDuration).setOnUpdate((float val) => {
+            parryRechargeMat.SetFloat("_FadeAmount", val);
+        });
+
+        //foreach (var parry in parryDatas)
+        //{
+        //    parry.gfx.transform.localScale = Vector3.one * parry.radius;
+        //    parry.gfx.SetActive(true);
+        //}
 
         Utility.Timer shieldTimer = new Utility.Timer();
         shieldTimer.Set(parryDuration);
@@ -99,7 +127,18 @@ public class Player : MonoBehaviour
         foreach (var parry in parryDatas)
             parry.gfx.SetActive(false);
 
-        yield return Timing.WaitForSeconds(parryCooldown);
+        // Shield gfx tweening
+        LeanTween.value(gameObject, -.1f, 1f, parryDuration * .5f).setOnUpdate((float val) => {
+            parryUseMat.SetFloat("_FadeAmount", val);
+        });
+
+        yield return Timing.WaitForSeconds(parryCooldown - parryReloadDuration);
+
+        LeanTween.value(gameObject, 1f, -.1f, parryReloadDuration).setOnUpdate((float val) => {
+            parryRechargeMat.SetFloat("_FadeAmount", val);
+        });
+
+        yield return Timing.WaitForSeconds(parryReloadDuration);
 
         shieldState = false;
     }

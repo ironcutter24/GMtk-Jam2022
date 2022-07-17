@@ -924,3 +924,5 @@ MonoBehaviour:
   parryDatas:
   - {fileID: 5564803023740669027}
   - {fileID: 2160068640579467398}
+  parryUseMat: {fileID: 2100000, guid: b9f80287eadc7d34999e926143254209, type: 2}
+  parryRechargeMat: {fileID: 2100000, guid: 16cd56cb540005b42adb7b9158579638, type: 2}
