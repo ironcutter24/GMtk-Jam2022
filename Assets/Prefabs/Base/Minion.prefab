@@ -73,6 +73,9 @@ MonoBehaviour:
   diceBulletPrefab: {fileID: 1953074021883496676, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
   minionType: 0
   shootCooldown: 2
+  gfx: {fileID: 5524978348616710010}
+  aura: {fileID: 5210477468761889496}
+  shapeCollider: {fileID: 8879194993988814869}
 --- !u!114 &1925224070431863324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +129,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1641911589332971655}
   - component: {fileID: 5210477468761889496}
+  - component: {fileID: 7289269714212239530}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: AuraGfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,6 +202,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7289269714212239530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728498828222175319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c10511d15a89b43b2ac831f7a327a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8314560616003450050
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +225,7 @@ GameObject:
   - component: {fileID: 5975165172910658358}
   - component: {fileID: 5524978348616710010}
   - component: {fileID: 8879194993988814869}
+  - component: {fileID: 4985612693469505968}
   m_Layer: 6
   m_Name: Graphics
   m_TagString: Untagged
@@ -297,3 +314,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
+--- !u!114 &4985612693469505968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8314560616003450050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c10511d15a89b43b2ac831f7a327a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
