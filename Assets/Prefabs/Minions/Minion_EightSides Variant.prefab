@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3511179348388009106, guid: 85a183d51fbe73f46b488c7126b35ea6, type: 3}
       propertyPath: minionType
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3511179348388009106, guid: 85a183d51fbe73f46b488c7126b35ea6, type: 3}
       propertyPath: shootCooldown

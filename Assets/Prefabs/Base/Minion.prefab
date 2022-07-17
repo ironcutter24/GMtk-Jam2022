@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 4316028477801837225}
   diceBulletPrefab: {fileID: 1953074021883496676, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
-  minionType: 6
+  minionType: 0
   shootCooldown: 2
 --- !u!114 &1925224070431863324
 MonoBehaviour:

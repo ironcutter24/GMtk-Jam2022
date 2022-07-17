@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1953074021883496677, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
       propertyPath: diceType
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1953074021883496677, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
       propertyPath: shapeCollider

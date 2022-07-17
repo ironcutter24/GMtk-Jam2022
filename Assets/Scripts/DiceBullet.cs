@@ -26,8 +26,8 @@ public class DiceBullet : MonoBehaviour
     public State CurrentState { get => currentState; }
 
     [SerializeField]
-    int diceType = 6;
-    public int Type { get => diceType; }
+    DiceType diceType = DiceType.None;
+    public DiceType Type { get => diceType; }
 
     private int value = 1;
     public int Value { get => value; }
@@ -103,7 +103,9 @@ public class DiceBullet : MonoBehaviour
 
     void RollDice()
     {
-        value = Random.Range(1, diceType + 1);
+        int rangeMax = DiceData.GetSidesOf(Type);
+
+        value = Random.Range(1, rangeMax + 1);
         textMesh.text = value.ToString();
     }
 }

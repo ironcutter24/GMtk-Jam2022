@@ -52,15 +52,30 @@ public class DiceCollection : MonoBehaviour
     }
 }
 
+public enum DiceType { None, Four, Six, Eight }
+
 [System.Serializable]
 public class DiceData
 {
-    public int type;
+    public DiceType type;
     public int value;
 
-    public DiceData(int type, int value)
+    public DiceData(DiceType type, int value)
     {
+        if (value < 0 || value > GetSidesOf(type)) throw new System.Exception("Dice value is out of range");
+
         this.type = type;
         this.value = value;
+    }
+
+    public static int GetSidesOf(DiceType dice)
+    {
+        switch (dice)
+        {
+            case DiceType.Four: return 4;
+            case DiceType.Six: return 6;
+            case DiceType.Eight: return 8;
+            default: throw new System.Exception("Dice type not set");
+        }
     }
 }

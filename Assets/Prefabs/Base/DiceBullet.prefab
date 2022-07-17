@@ -346,7 +346,7 @@ MonoBehaviour:
   bulletSpeed: 6
   shapeCollider: {fileID: 0}
   textMesh: {fileID: 2918889204325181682}
-  diceType: 6
+  diceType: 0
   queueAnchorPoint: {fileID: 5357307195410922012}
 --- !u!1 &4842936496344019409
 GameObject:

@@ -9,8 +9,8 @@ public class Minion : MonoBehaviour
     [SerializeField] GameObject diceBulletPrefab;
 
     [SerializeField]
-    private int minionType = 6;
-    public int Type { get => minionType; }
+    private DiceType minionType = DiceType.None;
+    public DiceType Type { get => minionType; }
 
     [SerializeField]
     private float shootCooldown = 2f;

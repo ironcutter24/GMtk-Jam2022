@@ -80,6 +80,10 @@ PrefabInstance:
       value: DiceBullet_SixSides Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1953074021883496677, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+      propertyPath: diceType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953074021883496677, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
       propertyPath: shapeCollider
       value: 
       objectReference: {fileID: 5170893642073655186}
