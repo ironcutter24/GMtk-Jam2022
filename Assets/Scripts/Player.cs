@@ -83,6 +83,8 @@ public class Player : MonoBehaviour
 
         shieldState = true;
 
+        AudioManager.Instance.PlayFX_parryUse();
+
         // Shield gfx tweening
         LeanTween.value(gameObject, 1f, -.1f, parryDuration * .5f).setOnUpdate((float val) => {
             Debug.Log("tweened val:" + val);
@@ -140,12 +142,16 @@ public class Player : MonoBehaviour
 
         yield return Timing.WaitForSeconds(parryReloadDuration);
 
+        AudioManager.Instance.PlayFX_parryReady();
+
         shieldState = false;
     }
 
     void Shoot()
     {
         if (queuedDices.Count <= 0) return;
+
+        AudioManager.Instance.PlayFX_shoot();
 
         var bullet = Instantiate(diceCollectionPrefab, bulletSpawnPoint.transform.position, Quaternion.identity).GetComponent<DiceCollection>();
         for (int i = 0; i < queuedDices.Count; i++)

@@ -46,6 +46,8 @@ public class Boss : MonoBehaviour
 
     IEnumerator<float> _Death()
     {
+        AudioManager.Instance.PlayFX_koBoss();
+
         yield return Timing.WaitForSeconds(2f);
 
         GameManager.Instance.LoadNextScene();
