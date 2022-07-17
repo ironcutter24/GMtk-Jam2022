@@ -5,14 +5,18 @@ using PathCreation;
 // Depending on the end of path instruction, will either loop, reverse, or stop at the end of the path.
 public class Follower : MonoBehaviour
 {
-    public PathCreator pathCreator;
+    private SplinePlacer splinePlacer;
+    private PathCreator pathCreator { get => splinePlacer.pathCreator; }
+
     public EndOfPathInstruction endOfPathInstruction;
-    public float speed = 5;
+
+    public float Speed { get => splinePlacer.MinionSpeed; }
+
     float distanceTravelled;
 
     void Start()
     {
-        if (pathCreator != null)
+        if (splinePlacer != null && pathCreator != null)
         {
             // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
             pathCreator.pathUpdated += OnPathChanged;
@@ -23,9 +27,9 @@ public class Follower : MonoBehaviour
 
     void Update()
     {
-        if (pathCreator != null)
+        if (splinePlacer != null && pathCreator != null)
         {
-            distanceTravelled += speed * Time.deltaTime;
+            distanceTravelled += Speed * Time.deltaTime;
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
             //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
         }
@@ -38,8 +42,8 @@ public class Follower : MonoBehaviour
         distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
     }
 
-    public void SetPath(PathCreator path)
+    public void SetPath(SplinePlacer splinePlacer)
     {
-        pathCreator = path;
+        this.splinePlacer = splinePlacer;
     }
 }

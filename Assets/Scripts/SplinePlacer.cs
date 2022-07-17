@@ -7,23 +7,29 @@ using PathCreation.Examples;
 [ExecuteInEditMode]
 public class SplinePlacer : PathSceneTool
 {
-    public GameObject prefab;
+    [SerializeField]
+    private List<GameObject> prefabs = new List<GameObject>();
 
-    public List<GameObject> prefabs = new List<GameObject>();
+    [SerializeField]
+    GameObject holder;
 
-    public GameObject holder;
-    public float spacing = 3;
+    [SerializeField]
+    float spacing = 3;
+
+    [SerializeField]
+    private float minionSpeed = 5f;
+    public float MinionSpeed { get => minionSpeed; }
     
     const float minSpacing = .1f;
 
-    private void Start()
+    private void Awake()
     {
         Generate();
     }
 
     void Generate()
     {
-        if (pathCreator != null && prefab != null && holder != null)
+        if (pathCreator != null && prefabs.Count > 0 && holder != null)
         {
             DestroyObjects();
                 
@@ -57,7 +63,7 @@ public class SplinePlacer : PathSceneTool
                 {
                     var obj = Instantiate(prefabs[index], point, rot, holder.transform);
                     Follower follower = obj.GetComponent<Follower>();
-                    follower.SetPath(pathCreator);
+                    follower.SetPath(this);
                 }
 
                 dst += spacing;
