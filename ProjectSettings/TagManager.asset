@@ -41,6 +41,15 @@ TagManager:
   - name: Background
     uniqueID: 3759865293
     locked: 0
+  - name: UI_Static
+    uniqueID: 1818288217
+    locked: 0
+  - name: UI_Dynemic
+    uniqueID: 1796597497
+    locked: 0
+  - name: 3D_Obj
+    uniqueID: 543470499
+    locked: 0
   - name: Boss
     uniqueID: 1347331745
     locked: 0
