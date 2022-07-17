@@ -69,7 +69,7 @@ public class Minion : MonoBehaviour
             gfx.material.SetFloat("_Alpha", val);
         });
 
-        LeanTween.value(gameObject, 1f, -.1f, .2f).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, -.1f, 1f, .3f).setOnUpdate((float val) => {
             Debug.Log("tweened val:" + val);
             aura.material.SetFloat("_FadeAmount", val);
         });
@@ -79,17 +79,15 @@ public class Minion : MonoBehaviour
 
     void TurnOn()
     {
-        shapeCollider.enabled = true;
-
         LeanTween.value(gameObject, .2f, 1f, .2f).setOnUpdate((float val) => {
             Debug.Log("tweened val:" + val);
             gfx.material.SetFloat("_Alpha", val);
         });
 
-        LeanTween.value(gameObject, -.1f, 1f, .2f).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, 1f, -.1f, .4f).setOnUpdate((float val) => {
             Debug.Log("tweened val:" + val);
             aura.material.SetFloat("_FadeAmount", val);
-        });
+        }).setOnComplete(() => shapeCollider.enabled = true);
 
         shootCoroutine = Timing.RunCoroutine(_SpawnBullet().CancelWith(gameObject));
     }

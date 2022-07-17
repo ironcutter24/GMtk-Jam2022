@@ -44,6 +44,8 @@ public class DiceBullet : MonoBehaviour
     {
         Instances.Add(this);
         Timing.RunCoroutine(_CheckDistance().CancelWith(gameObject));
+
+        RollDice();
     }
 
     private void OnDestroy()
