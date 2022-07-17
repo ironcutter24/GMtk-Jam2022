@@ -106,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 1953074021883496677, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
       propertyPath: shapeCollider
       value: 
-      objectReference: {fileID: 665250151}
+      objectReference: {fileID: 0}
     - target: {fileID: 2918889204325181682, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
       propertyPath: m_fontColor.b
       value: 0
@@ -138,37 +138,37 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7156331807310864988, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
     - {fileID: 2586065559220919911, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+    - {fileID: 1953074021883496677, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+    - {fileID: 1953074021883496674, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
---- !u!1 &1573981602339947163 stripped
+--- !u!1 &1573981602161402768 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1953074021570800111, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1953074021883496676, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
   m_PrefabInstance: {fileID: 1066598383285463924}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &665250151
-PolygonCollider2D:
+--- !u!114 &2759769582238040966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2918889204325181682, guid: 8f7d3154abecc48448eeb65ff7b41b7a, type: 3}
+  m_PrefabInstance: {fileID: 1066598383285463924}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8167304323655821254
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573981602339947163}
+  m_GameObject: {fileID: 1573981602161402768}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -2.124832, y: -1.468792}
-      - {x: 2.093624, y: -1.4583895}
-      - {x: 0.031208098, y: 2.5832212}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6755fbe79d6e7db4d8575932741b9292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 2759769582238040966}
+  type: 1
+  value: 1
