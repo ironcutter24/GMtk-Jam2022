@@ -18,11 +18,14 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject diceCollectionPrefab;
 
     [SerializeField]
-    Transform trailTarget;
-
+    Transform bulletSpawnPoint;
 
     [SerializeField]
-    Transform bulletSpawnPoint;
+    Transform trailTarget;
+
+    [SerializeField]
+    [Range(1, 12)]
+    int maxTrailLenght = 3;
 
 
     [Header("Parry")]
@@ -123,6 +126,11 @@ public class Player : MonoBehaviour
         //Destroy(go);
 
         var newDice = go.GetComponentInParent<DiceBullet>();
+
+        if (queuedDices.Count == maxTrailLenght)
+        {
+            PopLastElement();
+        }
 
         if (queuedDices.Count == 0)
         {
