@@ -40,6 +40,11 @@ public class DiceCollection : MonoBehaviour
         return false;
     }
 
+    public List<DiceData> GetDiceList()
+    {
+        return diceDatas;
+    }
+
     IEnumerator<float> _CheckDistance()
     {
         while (gameObject.activeInHierarchy)
@@ -77,5 +82,10 @@ public class DiceData
             case DiceType.Eight: return 8;
             default: throw new System.Exception("Dice type not set");
         }
+    }
+
+    public static bool AreEquals(DiceData a, DiceData b)
+    {
+        return a.type == b.type && a.value == b.value;
     }
 }
