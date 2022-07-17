@@ -21,17 +21,28 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         Timing.RunCoroutine(_RollCountdown().CancelWith(gameObject));
+
+        for (int i = 0; i < scenes.Count; i++)
+        {
+            if (scenes[i] == SceneManager.GetActiveScene())
+                currentScene = i;
+        }
     }
 
-    public void PlayerWin()
+    public void LoadNextScene()
     {
         currentScene++;
-        SceneManager.LoadScene(scenes[currentScene].name);
+        LoadScene(scenes[currentScene]);
     }
 
-    public void PlayerLose()
+    public void ReloadCurrentScene()
     {
-        SceneManager.LoadScene(scenes[currentScene].name);
+        LoadScene(scenes[currentScene]);
+    }
+
+    void LoadScene(Scene sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad.name);
     }
 
     IEnumerator<float> _RollCountdown()
