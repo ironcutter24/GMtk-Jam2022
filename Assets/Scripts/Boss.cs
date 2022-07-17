@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MEC;
 
 public class Boss : MonoBehaviour
 {
@@ -38,8 +39,16 @@ public class Boss : MonoBehaviour
 
             if(dices.Count <= 0)
             {
-                GameManager.Instance.PlayerLose();
+                Timing.RunCoroutine(_Death().CancelWith(gameObject));
             }
         }
+    }
+
+    IEnumerator<float> _Death()
+    {
+        yield return Timing.WaitForSeconds(2f);
+
+        GameManager.Instance.LoadNextScene();
+        yield break;
     }
 }

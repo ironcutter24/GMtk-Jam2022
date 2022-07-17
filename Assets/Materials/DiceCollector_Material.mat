@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Parry_Material
+  m_Name: DiceCollector_Material
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
   m_ShaderKeywords: BLURISHD_ON BLUR_ON DISTORT_ON ETC1_EXTERNAL_ALPHA FADE_ON GLOWTEX_ON
-    GLOW_ON GRADIENT_ON OUTBASE8DIR_ON OUTBASE_ON RADIALGRADIENT_ON SHAKEUV_ON _BLURHD_ON
-    _GRADISRADIAL_ON
+    GLOW_ON GRADIENT_ON INNEROUTLINE_ON OUTBASE8DIR_ON OUTBASE_ON OUTTEX_ON RADIALGRADIENT_ON
+    SHAKEUV_ON TWISTUV_ON _BLURHD_ON _GRADISRADIAL_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -100,11 +100,11 @@ Material:
     - _ColorSwapRedLuminosity: 0.5
     - _Contrast: 1
     - _CullingOption: 0
-    - _DistortAmount: 1.08
-    - _DistortTexXSpeed: 5
+    - _DistortAmount: 2
+    - _DistortTexXSpeed: 50
     - _DistortTexYSpeed: 0
     - _EditorDrawers: 6
-    - _FadeAmount: 1
+    - _FadeAmount: -0.100000024
     - _FadeBurnGlow: 160
     - _FadeBurnTransition: 0.107
     - _FadeBurnWidth: 0.19
@@ -179,8 +179,8 @@ Material:
     - _OutlineTexGrey: 0
     - _OutlineTexToggle: 0
     - _OutlineTexXSpeed: 26
-    - _OutlineTexYSpeed: 0
-    - _OutlineWidth: 0.004
+    - _OutlineTexYSpeed: 1
+    - _OutlineWidth: 0.037
     - _OverlayBlend: 1
     - _OverlayGlow: 1
     - _PinchUvAmount: 0.35
@@ -196,7 +196,7 @@ Material:
     - _ShadowAlpha: 0
     - _ShadowX: 0.1
     - _ShadowY: -0.05
-    - _ShakeUvSpeed: 2
+    - _ShakeUvSpeed: 12.7
     - _ShakeUvX: 2.5
     - _ShakeUvY: 2.5
     - _ShineGlow: 1
@@ -205,10 +205,10 @@ Material:
     - _ShineWidth: 0.1
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
-    - _TwistUvAmount: 0
-    - _TwistUvPosX: 0.55
-    - _TwistUvPosY: 0.37
-    - _TwistUvRadius: 1.72
+    - _TwistUvAmount: 1.28
+    - _TwistUvPosX: 0.5
+    - _TwistUvPosY: 0.5
+    - _TwistUvRadius: 0.24
     - _WaveAmount: 7
     - _WaveSpeed: 10
     - _WaveStrength: 7.5
@@ -219,7 +219,7 @@ Material:
     - _ZoomUvAmount: 0.5
     m_Colors:
     - _AlphaOutlineColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0, g: 0.006978632, b: 0.007843138, a: 1}
+    - _Color: {r: 0.00026699825, g: 0.009567454, b: 0.01886791, a: 1}
     - _ColorChangeNewCol: {r: 1, g: 1, b: 0, a: 1}
     - _ColorChangeNewCol2: {r: 1, g: 1, b: 0, a: 1}
     - _ColorChangeNewCol3: {r: 1, g: 1, b: 0, a: 1}
@@ -229,8 +229,8 @@ Material:
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
-    - _FadeBurnColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0, g: 0.8498082, b: 1, a: 1}
+    - _FadeBurnColor: {r: 1, g: 0.89152193, b: 0, a: 1}
+    - _GlowColor: {r: 0, g: 0.4050064, b: 1, a: 1}
     - _GradBotLeftCol: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradTopLeftCol: {r: 0, g: 0.69860935, b: 1, a: 1}
@@ -239,7 +239,7 @@ Material:
     - _HitEffectColor: {r: 1, g: 1, b: 1, a: 1}
     - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0.083200455, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0.23016739, b: 1, a: 1}
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
