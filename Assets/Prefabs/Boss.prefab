@@ -400,6 +400,7 @@ MonoBehaviour:
   - {fileID: 569954003003335775}
   - {fileID: 8409086434937856218}
   dices: []
+  bossMat: {fileID: 2100000, guid: 3241ea466d4f8334898daf420de4026b, type: 2}
 --- !u!1 &5593115462211827404
 GameObject:
   m_ObjectHideFlags: 0

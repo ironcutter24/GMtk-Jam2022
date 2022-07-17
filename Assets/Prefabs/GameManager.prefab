@@ -177,6 +177,8 @@ MonoBehaviour:
   - Tutorial
   - Level 1
   - Level 2
+  - Level 3
+  - EndScreen
   currentScene: 0
 --- !u!1 &5043836511050389517
 GameObject:
@@ -229,6 +231,7 @@ MonoBehaviour:
   parryReady: {fileID: 8300000, guid: 04737a3071377fd47b5492fab685c84a, type: 3}
   hitPlayer: {fileID: 0}
   hitEnemy: {fileID: 0}
+  hitBoss: {fileID: 8300000, guid: 6001f6d083f652a49b25e66789c1f256, type: 3}
   hitNoEffect: {fileID: 0}
   respawnEnemy: {fileID: 8300000, guid: cc937b40b66257549a93409db91b0260, type: 3}
   koEnemy: {fileID: 8300000, guid: eabc102547d12ae4fafdb22c10b106aa, type: 3}

@@ -14,7 +14,7 @@ public class AudioManager : Singleton<AudioManager>
         shoot, parryUse, parryReady, hitPlayer,
 
         // Enemies
-        hitEnemy, hitNoEffect, respawnEnemy, koEnemy, koBoss;
+        hitEnemy, hitBoss, hitNoEffect, respawnEnemy, koEnemy, koBoss;
 
     [Space]
 
@@ -44,6 +44,8 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayFX_hitPlayer() { PlayFX(hitPlayer); }
 
     public void PlayFX_hitEnemy() { PlayFX(hitEnemy); }
+
+    public void PlayFX_hitBoss() { PlayFX(hitBoss); }
 
     public void PlayFX_hitNoEffect() { PlayFX(hitNoEffect); }
 

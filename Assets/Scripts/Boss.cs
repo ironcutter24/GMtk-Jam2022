@@ -50,6 +50,9 @@ public class Boss : MonoBehaviour
                 {
                     if(DiceData.AreEquals(dice, dices[i].DiceData))
                     {
+                        AudioManager.Instance.PlayFX_hitBoss();
+                        HitAnimation();
+
                         var obj = dices[i];
                         dices.RemoveAt(i);
                         Destroy(obj.gameObject);
@@ -73,6 +76,21 @@ public class Boss : MonoBehaviour
 
         GameManager.Instance.LoadNextScene();
         yield break;
+    }
+
+    [SerializeField] Material bossMat;
+    void HitAnimation()
+    {
+        LeanTween.value(gameObject, -.1f, .1f, .4f).setOnUpdate((float val) => {
+            bossMat.SetFloat("_FadeAmount", val);
+        }).setOnComplete(
+            () =>
+            LeanTween.value(gameObject, .1f, -.1f, .4f).setOnUpdate((float val) => {
+                bossMat.SetFloat("_FadeAmount", val);
+            })
+
+
+        );
     }
 
     void InitDices()
