@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceRollCooldown: 1
+  scenes: []
+  currentScene: 0
 --- !u!1 &5043836511050389517
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +91,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a965571ac9a468241ba9526d2876a9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceRoll: {fileID: 8300000, guid: 632ad47b25ffefa40890d31784c55a5a, type: 3}
+  shoot: {fileID: 8300000, guid: bddec305d759f0a448289678ffc0f33b, type: 3}
+  parryUse: {fileID: 8300000, guid: 273c9f928564e3e4ba6140f8de83b291, type: 3}
+  parryReady: {fileID: 8300000, guid: 04737a3071377fd47b5492fab685c84a, type: 3}
+  hitPlayer: {fileID: 0}
+  hitEnemy: {fileID: 0}
+  hitNoEffect: {fileID: 0}
+  respawnEnemy: {fileID: 8300000, guid: cc937b40b66257549a93409db91b0260, type: 3}
+  koEnemy: {fileID: 8300000, guid: eabc102547d12ae4fafdb22c10b106aa, type: 3}
+  koBoss: {fileID: 8300000, guid: a857b6c88a67a1646b5847d54274dcde, type: 3}
+  ostIntro: {fileID: 0}
+  ostLoop: {fileID: 0}
 --- !u!1 &9104066563704060154
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] float diceRollCooldown = 1f;
-
     [SerializeField] List<Scene> scenes = new List<Scene>();
     [SerializeField] int currentScene = 0;
 
@@ -20,8 +18,6 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        Timing.RunCoroutine(_RollCountdown().CancelWith(gameObject));
-
         for (int i = 0; i < scenes.Count; i++)
         {
             if (scenes[i] == SceneManager.GetActiveScene())
@@ -43,15 +39,6 @@ public class GameManager : Singleton<GameManager>
     void LoadScene(Scene sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad.name);
-    }
-
-    IEnumerator<float> _RollCountdown()
-    {
-        while (Game.IsIn(GameState.Game))
-        {
-            yield return Timing.WaitForSeconds(diceRollCooldown);
-            DiceBullet.RollAllDices();
-        }
     }
 }
 
