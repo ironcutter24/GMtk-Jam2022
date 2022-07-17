@@ -64,6 +64,8 @@ public class Minion : MonoBehaviour
         Timing.KillCoroutines(shootCoroutine);
         shapeCollider.enabled = false;
 
+        AudioManager.Instance.PlayFX_koEnemy();
+
         LeanTween.value(gameObject, 1f, .2f, .2f).setOnUpdate((float val) => {
             gfx.material.SetFloat("_Alpha", val);
         });

@@ -29,6 +29,8 @@ public class LevelManager : MonoBehaviour
             });
 
             yield return Timing.WaitForSeconds(diceRollCooldown);
+
+            AudioManager.Instance.PlayFX_diceRoll();
             DiceBullet.RollAllDices();
 
             LeanTween.value(gameObject, 0f, 180f, .2f).setOnUpdate((float val) =>
