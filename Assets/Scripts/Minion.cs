@@ -12,6 +12,9 @@ public class Minion : MonoBehaviour
     private int minionType = 6;
     public int Type { get => minionType; }
 
+    [SerializeField]
+    private float shootCooldown = 2f;
+
     private void Start()
     {
         Timing.RunCoroutine(_SpawnBullet().CancelWith(gameObject));
@@ -28,7 +31,7 @@ public class Minion : MonoBehaviour
         if (collision.gameObject.layer == 9)  // "FriendlyBullet" layer
         {
             var diceColl = collision.gameObject.GetComponentInParent<DiceCollection>();
-            if (diceColl.PopDices(new List<DiceData> { new DiceData(Type, 0) }))
+            if (diceColl.PopDices(new DiceData(Type, 0)))
             {
                 Destroy(gameObject);
             }
@@ -39,7 +42,7 @@ public class Minion : MonoBehaviour
     {
         while (gameObject.activeInHierarchy)
         {
-            yield return Timing.WaitForSeconds(2f);
+            yield return Timing.WaitForSeconds(shootCooldown);
             LaunchDice();
         }
     }

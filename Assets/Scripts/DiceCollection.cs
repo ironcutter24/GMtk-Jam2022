@@ -25,16 +25,16 @@ public class DiceCollection : MonoBehaviour
         rb.MovePosition(rb.position + (Vector2)transform.right * speed * Time.deltaTime);
     }
 
-    public bool PopDices(List<DiceData> targetDices)
+    public bool PopDices(DiceData targetDice)
     {
         Debug.Log("Dices data requested!");
 
-        foreach (var targetDice in targetDices)
+        foreach (var sampleDice in diceDatas)
         {
-            foreach (var sampleDice in diceDatas)
+            if (sampleDice.type == targetDice.type)
             {
-                if(sampleDice.type == targetDice.type)
-                    return true;
+                if (targetDice.value == 0) return true;
+                if (sampleDice.value == targetDice.value) return true;
             }
         }
         return false;
