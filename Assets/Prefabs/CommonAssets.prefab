@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceRollBarMat: {fileID: 2100000, guid: f03e3fc7baf27564b8d4e8a14cd0228c, type: 2}
-  diceRollCooldown: 1
+  diceRollCooldown: 1.2
   prism: {fileID: 2511549464673030502}
 --- !u!1 &8965224248894364387
 GameObject:
