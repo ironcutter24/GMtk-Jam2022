@@ -138,6 +138,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3511179348388009106, guid: 85a183d51fbe73f46b488c7126b35ea6, type: 3}
+      propertyPath: shootCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511179348388009106, guid: 85a183d51fbe73f46b488c7126b35ea6, type: 3}
       propertyPath: diceBulletPrefab
       value: 
       objectReference: {fileID: 8457588816571343767, guid: 46f03247773af8c45bdcafbf5510b9b6, type: 3}
