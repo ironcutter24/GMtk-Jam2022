@@ -187,6 +187,7 @@ public class Player : MonoBehaviour
     {
         if (queuedDices.Count <= 0)
         {
+            Timing.RunCoroutine(_Death().CancelWith(gameObject));
             return;
         }
         else
@@ -208,6 +209,14 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + inputManager.Directional * speed * Time.deltaTime);
+    }
+
+    IEnumerator<float> _Death()
+    {
+        yield return Timing.WaitForSeconds(2f);
+
+        GameManager.Instance.ReloadCurrentScene();
+        yield break;
     }
 
     private void OnDrawGizmos()
