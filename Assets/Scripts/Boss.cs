@@ -22,9 +22,7 @@ public class Boss : MonoBehaviour
     [SerializeField]
     List<Transform> presetFour = new List<Transform>();
 
-    [Space]
 
-    [SerializeField]
     List<BossDice> dices = new List<BossDice>();
 
     private void Start()

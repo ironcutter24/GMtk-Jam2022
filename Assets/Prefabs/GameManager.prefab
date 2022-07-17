@@ -173,7 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNames:
-  - TestDam
+  - TitleScreen
+  - Tutorial
+  - Level 1
+  - Level 2
   currentScene: 0
 --- !u!1 &5043836511050389517
 GameObject:
