@@ -42,29 +42,23 @@ public class Boss : MonoBehaviour
         {
             Debug.Log("Boss hit");
 
-            var diceColl = collision.gameObject.GetComponentInParent<DiceCollection>();
+            var diceDatas = collision.gameObject.GetComponentInParent<DiceCollection>().GetDiceList();
 
-
-
-
-            int i = 0;
-            int count = dices.Count;
-            while (i < count)
+            foreach (var dice in diceDatas)
             {
-                if (diceColl.PopDices(dices[i].DiceData))
+                for (int i = 0; i < dices.Count; i++)
                 {
-                    var obj = dices[i];
-                    dices.RemoveAt(i);
-                    Destroy(obj);
-                    count--;
-                }
-                else
-                {
-                    i++;
+                    if(DiceData.AreEquals(dice, dices[i].DiceData))
+                    {
+                        var obj = dices[i];
+                        dices.RemoveAt(i);
+                        Destroy(obj.gameObject);
+                        break;
+                    }
                 }
             }
 
-            if(dices.Count <= 0)
+            if (dices.Count <= 0)
             {
                 Timing.RunCoroutine(_Death().CancelWith(gameObject));
             }
@@ -86,10 +80,10 @@ public class Boss : MonoBehaviour
         switch (numberOfDices)
         {
             case 1: CreateDices(new List<Transform> { transform }); break;
-            case 2: CreateDices(presetTwo);     break;
-            case 3: CreateDices(presetThree);   break;
-            case 4: CreateDices(presetFour);    break;
-            default:    throw new System.Exception("Incorrect boss dice number");
+            case 2: CreateDices(presetTwo); break;
+            case 3: CreateDices(presetThree); break;
+            case 4: CreateDices(presetFour); break;
+            default: throw new System.Exception("Incorrect boss dice number");
         }
     }
 
@@ -106,12 +100,12 @@ public class Boss : MonoBehaviour
 
     GameObject GetRandomDiceTypePrefab()
     {
-        switch(Random.Range(0, 3))
+        switch (Random.Range(0, 3))
         {
-            case 0:     return FourSidesPrefabs;
-            case 1:     return SixSidesPrefab;
-            case 2:     return EightSidesPrefab;
-            default:    throw new System.Exception("Random dice generation error");
+            case 0: return FourSidesPrefabs;
+            case 1: return SixSidesPrefab;
+            case 2: return EightSidesPrefab;
+            default: throw new System.Exception("Random dice generation error");
         }
     }
 }

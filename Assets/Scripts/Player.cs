@@ -87,7 +87,6 @@ public class Player : MonoBehaviour
 
         // Shield gfx tweening
         LeanTween.value(gameObject, 1f, -.1f, parryDuration * .5f).setOnUpdate((float val) => {
-            Debug.Log("tweened val:" + val);
             parryUseMat.SetFloat("_FadeAmount", val);
         });
 
