@@ -12,14 +12,14 @@ public class BossDice : MonoBehaviour
     DiceType type = DiceType.None;
     public DiceType Type { get { return type; } }
 
-    [SerializeField]
     int value = 1;
     public int Value { get { return value; } }
 
     public DiceData DiceData { get => new DiceData(type, value); }
 
-    public void SetValue(int value)
+    private void Start()
     {
-        this.value = value;
+        value = Random.Range(1, DiceData.GetSidesOf(Type) + 1);
+        textMesh.text = value.ToString();
     }
 }

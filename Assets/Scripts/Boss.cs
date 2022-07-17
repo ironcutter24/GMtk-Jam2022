@@ -22,7 +22,7 @@ public class Boss : MonoBehaviour
     [SerializeField]
     List<Transform> presetFour = new List<Transform>();
 
-
+    [SerializeField]
     List<BossDice> dices = new List<BossDice>();
 
     private void Start()
@@ -40,9 +40,12 @@ public class Boss : MonoBehaviour
 
         if (collision.gameObject.layer == 9)  // "FriendlyBullet" layer
         {
-            Debug.Log("Hit: " + gameObject.name);
+            Debug.Log("Boss hit");
 
             var diceColl = collision.gameObject.GetComponentInParent<DiceCollection>();
+
+
+
 
             int i = 0;
             int count = dices.Count;
@@ -94,9 +97,10 @@ public class Boss : MonoBehaviour
     {
         foreach (var t in targets)
         {
-            var obj = Instantiate(GetRandomDiceTypePrefab(), transform);
+            var obj = Instantiate(GetRandomDiceTypePrefab(), t);
             var script = obj.GetComponent<BossDice>();
-            script.SetValue(Random.Range(1, DiceData.GetSidesOf(script.Type) + 1));
+
+            dices.Add(script);
         }
     }
 
