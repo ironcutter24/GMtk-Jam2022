@@ -7,12 +7,17 @@ public class Player : MonoBehaviour
 {
     CustomInput.InputManager inputManager;
 
+    bool shieldState = false;
+
     [SerializeField]
     Rigidbody2D rb;
 
     [SerializeField]
     [Range(2f, 12f)]
     float speed = 6f;
+
+    [SerializeField]
+    SpriteRenderer gfx;
 
     [SerializeField] GameObject diceCollectionPrefab;
 
@@ -56,26 +61,47 @@ public class Player : MonoBehaviour
     private void Start()
     {
         inputManager = CustomInput.InputManager.Instance;
-
-        /*
-        LeanTween.value(gameObject, -.1f, 1f, 5f).setOnUpdate((float val) => {
-            Debug.Log("tweened val:" + val);
-            parryUseMat.SetFloat("_FadeAmount", val);
-            parryRechargeMat.SetFloat("_FadeAmount", val);
-        });
-        */
     }
 
-    bool shieldState = false;
-
+    int horizontalTweenId;
+    int verticalTweenId;
+    Vector2 leanSpace = new Vector2(.12f, .1f);
     private void Update()
     {
+        const float leanTime = .2f;
+
+        if (inputManager.Horizontal.HasChanged)
+        {
+            LeanTween.cancel(horizontalTweenId);
+            horizontalTweenId = LeanTween.value(gfx.gameObject, transform.localScale.y, inputManager.Vertical.GetValue(), leanTime).setOnUpdate((float val) =>
+            {
+                transform.localScale = new Vector3(1f - (Mathf.Abs(val) * leanSpace.x), 1f, 1f);
+            }).id;
+        }
+
+        if (inputManager.Vertical.HasChanged)
+        {
+            LeanTween.cancel(verticalTweenId);
+            verticalTweenId = LeanTween.value(gfx.gameObject, transform.localScale.y, inputManager.Vertical.GetValue(), leanTime).setOnUpdate((float val) =>
+            {
+                transform.localScale = new Vector3(1f, 1f - (Mathf.Abs(val) * leanSpace.y), 1f);
+            }).id;
+        }
+
+
         if (inputManager.Shield && !shieldState)
             Timing.RunCoroutine(_Shield().CancelWith(gameObject));
 
         if (inputManager.Shoot)
             Shoot();
     }
+
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + inputManager.Directional * speed * Time.deltaTime);
+    }
+
+    #region Abilities
 
     IEnumerator<float> _Shield()
     {
@@ -157,6 +183,8 @@ public class Player : MonoBehaviour
         queuedDices.Clear();
     }
 
+    #endregion
+
     #region Trail
 
     List<GameObject> queuedDices = new List<GameObject>();
@@ -209,11 +237,6 @@ public class Player : MonoBehaviour
     }
 
     #endregion
-
-    private void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + inputManager.Directional * speed * Time.deltaTime);
-    }
 
     IEnumerator<float> _Death()
     {
