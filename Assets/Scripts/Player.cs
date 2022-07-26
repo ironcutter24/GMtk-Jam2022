@@ -94,18 +94,12 @@ public class Player : MonoBehaviour
             parryRechargeMat.SetFloat("_FadeAmount", val);
         });
 
-        //foreach (var parry in parryDatas)
-        //{
-        //    parry.gfx.transform.localScale = Vector3.one * parry.radius;
-        //    parry.gfx.SetActive(true);
-        //}
+        HashSet<Collider2D> hits = new HashSet<Collider2D>();
 
         Utility.Timer shieldTimer = new Utility.Timer();
         shieldTimer.Set(parryDuration);
         while (!shieldTimer.IsExpired)
         {
-            HashSet<Collider2D> hits = new HashSet<Collider2D>();
-
             foreach (var parry in parryDatas)
             {
                 var hit = Physics2D.OverlapCircleAll(parry.transform.position, parry.radius, parryMask);
@@ -121,6 +115,7 @@ public class Player : MonoBehaviour
                     if (obj != null)
                         Enqueue(obj.gameObject);
                 }
+                hits.Clear();
             }
             yield return Timing.WaitForOneFrame;
         }
@@ -161,6 +156,8 @@ public class Player : MonoBehaviour
         }
         queuedDices.Clear();
     }
+
+    #region Trail
 
     List<GameObject> queuedDices = new List<GameObject>();
     void Enqueue(GameObject go)
@@ -211,6 +208,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    #endregion
+
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + inputManager.Directional * speed * Time.deltaTime);
@@ -218,7 +217,7 @@ public class Player : MonoBehaviour
 
     IEnumerator<float> _Death()
     {
-        yield return Timing.WaitForSeconds(2f);
+        //yield return Timing.WaitForSeconds(2f);
 
         GameManager.Instance.ReloadCurrentScene();
         yield break;

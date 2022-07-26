@@ -5,25 +5,20 @@ using MEC;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField]
-    GameObject FourSidesPrefabs, SixSidesPrefab, EightSidesPrefab;
+    private List<BossDice> dices = new List<BossDice>();
 
+    [SerializeField] GameObject FourSidesPrefabs, SixSidesPrefab, EightSidesPrefab;
+
+    [SerializeField] List<Transform> presetTwo = new List<Transform>();
+    [SerializeField] List<Transform> presetThree = new List<Transform>();
+    [SerializeField] List<Transform> presetFour = new List<Transform>();
+
+    [SerializeField] Material bossMat;
+
+    [Header("Custom Attributes")]
     [SerializeField, Range(1, 4)]
     int numberOfDices = 1;
 
-    [Space]
-
-    [SerializeField]
-    List<Transform> presetTwo = new List<Transform>();
-
-    [SerializeField]
-    List<Transform> presetThree = new List<Transform>();
-
-    [SerializeField]
-    List<Transform> presetFour = new List<Transform>();
-
-    [SerializeField]
-    List<BossDice> dices = new List<BossDice>();
 
     private void Start()
     {
@@ -78,7 +73,6 @@ public class Boss : MonoBehaviour
         yield break;
     }
 
-    [SerializeField] Material bossMat;
     void HitAnimation()
     {
         LeanTween.value(gameObject, -.1f, .1f, .4f).setOnUpdate((float val) => {
@@ -109,14 +103,14 @@ public class Boss : MonoBehaviour
     {
         foreach (var t in targets)
         {
-            var obj = Instantiate(GetRandomDiceTypePrefab(), t);
+            var obj = Instantiate(GetRandomDicePrefab(), t);
             var script = obj.GetComponent<BossDice>();
 
             dices.Add(script);
         }
     }
 
-    GameObject GetRandomDiceTypePrefab()
+    GameObject GetRandomDicePrefab()
     {
         switch (Random.Range(0, 3))
         {
