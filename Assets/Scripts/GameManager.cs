@@ -10,10 +10,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] List<string> sceneNames = new List<string>();
     [SerializeField] int currentScene = 0;
 
+    float defaultFixedDeltaTime;
+
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
+
+        defaultFixedDeltaTime = Time.fixedDeltaTime;
     }
 
     private void Start()
@@ -44,7 +48,16 @@ public class GameManager : Singleton<GameManager>
 
     void LoadScene(string sceneToLoad)
     {
+        SetTimeScale(1f);
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void SetTimeScale(float newTimeScale)
+    {
+        Time.timeScale = newTimeScale;
+
+        // Needed to keep FixedUpdate constant
+        Time.fixedDeltaTime = defaultFixedDeltaTime * Time.timeScale;
     }
 }
 

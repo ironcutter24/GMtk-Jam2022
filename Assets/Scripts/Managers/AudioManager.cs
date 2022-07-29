@@ -11,7 +11,7 @@ public class AudioManager : Singleton<AudioManager>
         diceRoll,
         
         // Player
-        shoot, parryUse, parryReady, hitPlayer,
+        shoot, parryUse, parryReady, hitPlayer, koPlayer,
 
         // Enemies
         hitEnemy, hitBoss, hitNoEffect, respawnEnemy, koEnemy, koBoss;
@@ -42,6 +42,9 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayFX_parryReady() { PlayFX(parryReady); }
 
     public void PlayFX_hitPlayer() { PlayFX(hitPlayer); }
+
+    public void PlayFX_koPlayer() { PlayFX(koPlayer); }
+
 
     public void PlayFX_hitEnemy() { PlayFX(hitEnemy); }
 

@@ -913,6 +913,7 @@ MonoBehaviour:
   rb: {fileID: 9164761727890552361}
   speed: 10
   gfx: {fileID: 1723297442670917179}
+  aura: {fileID: 9192790304576012176}
   diceCollectionPrefab: {fileID: 7658256293952441248, guid: 70c14860feb0deb4c9b68b7fbf71332e, type: 3}
   bulletSpawnPoint: {fileID: 834174781749038585}
   trailTarget: {fileID: 3518277030200387340}

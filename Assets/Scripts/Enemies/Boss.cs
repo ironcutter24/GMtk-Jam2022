@@ -19,6 +19,7 @@ public class Boss : MonoBehaviour
     [SerializeField, Range(1, 4)]
     int numberOfDices = 1;
 
+    float hitDuration = .4f;
 
     private void Start()
     {
@@ -67,7 +68,7 @@ public class Boss : MonoBehaviour
     {
         AudioManager.Instance.PlayFX_koBoss();
 
-        yield return Timing.WaitForSeconds(2f);
+        yield return Timing.WaitForSeconds(hitDuration * 2f);
 
         GameManager.Instance.LoadNextScene();
         yield break;
@@ -75,15 +76,12 @@ public class Boss : MonoBehaviour
 
     void HitAnimation()
     {
-        LeanTween.value(gameObject, -.1f, .1f, .4f).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, -.1f, .1f, hitDuration).setOnUpdate((float val) => {
             bossMat.SetFloat("_FadeAmount", val);
-        }).setOnComplete(
-            () =>
-            LeanTween.value(gameObject, .1f, -.1f, .4f).setOnUpdate((float val) => {
-                bossMat.SetFloat("_FadeAmount", val);
-            })
-
-
+        }).setOnComplete(() =>
+        LeanTween.value(gameObject, .1f, -.1f, hitDuration).setOnUpdate((float val) => {
+            bossMat.SetFloat("_FadeAmount", val);
+        })
         );
     }
 

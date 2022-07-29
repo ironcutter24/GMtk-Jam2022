@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     float speed = 6f;
 
     [SerializeField]
-    SpriteRenderer gfx;
+    SpriteRenderer gfx, aura;
 
     [SerializeField] GameObject diceCollectionPrefab;
 
@@ -96,9 +96,13 @@ public class Player : MonoBehaviour
             Shoot();
     }
 
+    bool hasController = true;
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + inputManager.Directional * speed * Time.deltaTime);
+        if (hasController)
+        {
+            rb.MovePosition(rb.position + inputManager.Directional * speed * Time.deltaTime);
+        }
     }
 
     #region Abilities
@@ -217,11 +221,13 @@ public class Player : MonoBehaviour
     {
         if (queuedDices.Count <= 0)
         {
-            Timing.RunCoroutine(_Death().CancelWith(gameObject));
+            StartCoroutine(_Death());
             return;
         }
         else
         {
+            AudioManager.Instance.PlayFX_hitPlayer();
+
             var dice = queuedDices[0];
             if (queuedDices.Count == 1)
             {
@@ -238,9 +244,24 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    IEnumerator<float> _Death()
+    IEnumerator _Death()
     {
-        //yield return Timing.WaitForSeconds(2f);
+        hasController = false;
+
+        AudioManager.Instance.PlayFX_koPlayer();
+        GameManager.Instance.SetTimeScale(.1f);
+
+        LeanTween.value(gfx.gameObject, 1f, 0f, .4f).setOnUpdate((float val) => {
+            gfx.material.SetFloat("_Alpha", val);
+            
+            parryRechargeMat.SetFloat("_Alpha", val);
+
+            var colorApp = aura.color;
+            colorApp.a = val;
+            aura.color = colorApp;
+        }).setIgnoreTimeScale(true);
+
+        yield return new WaitForSecondsRealtime(1.2f);
 
         GameManager.Instance.ReloadCurrentScene();
         yield break;
