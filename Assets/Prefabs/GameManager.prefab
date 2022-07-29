@@ -229,7 +229,8 @@ MonoBehaviour:
   shoot: {fileID: 8300000, guid: bddec305d759f0a448289678ffc0f33b, type: 3}
   parryUse: {fileID: 8300000, guid: 273c9f928564e3e4ba6140f8de83b291, type: 3}
   parryReady: {fileID: 8300000, guid: 04737a3071377fd47b5492fab685c84a, type: 3}
-  hitPlayer: {fileID: 0}
+  hitPlayer: {fileID: 8300000, guid: ace1cec67faed544d83fb05e62d766b5, type: 3}
+  koPlayer: {fileID: 8300000, guid: 35d7de66f4524c041a45002deda82d79, type: 3}
   hitEnemy: {fileID: 0}
   hitBoss: {fileID: 8300000, guid: 6001f6d083f652a49b25e66789c1f256, type: 3}
   hitNoEffect: {fileID: 0}

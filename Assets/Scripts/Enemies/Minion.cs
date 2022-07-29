@@ -32,7 +32,7 @@ public class Minion : MonoBehaviour
         if (collision.gameObject.layer == 8)  // "Player" layer
         {
             Debug.Log("Player hit by: " + gameObject.name);
-            collision.gameObject.GetComponentInParent<Player>().PopLastElement();
+            collision.gameObject.GetComponentInParent<Player>().Hit();
         }
 
         if (collision.gameObject.layer == 9)  // "FriendlyBullet" layer

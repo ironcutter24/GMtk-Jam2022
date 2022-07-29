@@ -61,6 +61,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         inputManager = CustomInput.InputManager.Instance;
+
+        parryUseMat.SetFloat("_FadeAmount", 1f);
     }
 
     int horizontalTweenId;
@@ -116,11 +118,13 @@ public class Player : MonoBehaviour
         AudioManager.Instance.PlayFX_parryUse();
 
         // Shield gfx tweening
-        LeanTween.value(gameObject, 1f, -.1f, parryDuration * .5f).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, 1f, -.1f, parryDuration * .5f).setOnUpdate((float val) =>
+        {
             parryUseMat.SetFloat("_FadeAmount", val);
         });
 
-        LeanTween.value(gameObject, -.1f, 1f, parryReloadDuration).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, -.1f, 1f, parryReloadDuration).setOnUpdate((float val) =>
+        {
             parryRechargeMat.SetFloat("_FadeAmount", val);
         });
 
@@ -154,13 +158,15 @@ public class Player : MonoBehaviour
             parry.gfx.SetActive(false);
 
         // Shield gfx tweening
-        LeanTween.value(gameObject, -.1f, 1f, parryDuration * .5f).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, -.1f, 1f, parryDuration * .5f).setOnUpdate((float val) =>
+        {
             parryUseMat.SetFloat("_FadeAmount", val);
         });
 
         yield return Timing.WaitForSeconds(parryCooldown - parryReloadDuration);
 
-        LeanTween.value(gameObject, 1f, -.1f, parryReloadDuration).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, 1f, -.1f, parryReloadDuration).setOnUpdate((float val) =>
+        {
             parryRechargeMat.SetFloat("_FadeAmount", val);
         });
 
@@ -180,9 +186,9 @@ public class Player : MonoBehaviour
         var bullet = Instantiate(diceCollectionPrefab, bulletSpawnPoint.transform.position, Quaternion.identity).GetComponent<DiceCollection>();
         for (int i = 0; i < queuedDices.Count; i++)
         {
-            var dice = queuedDices[i].GetComponent<DiceBullet>();
+            var dice = queuedDices[i];
             bullet.AddDice(new DiceData(dice.Type, dice.Value));
-            Destroy(queuedDices[i]);
+            Destroy(queuedDices[i].gameObject);
         }
         queuedDices.Clear();
     }
@@ -191,7 +197,7 @@ public class Player : MonoBehaviour
 
     #region Trail
 
-    List<GameObject> queuedDices = new List<GameObject>();
+    List<DiceBullet> queuedDices = new List<DiceBullet>();
     void Enqueue(GameObject go)
     {
         //var val = go.GetComponent<DiceBullet>().Value;
@@ -211,13 +217,19 @@ public class Player : MonoBehaviour
         }
         else
         {
-            newDice.SetQueueState(queuedDices[queuedDices.Count - 1].GetComponent<DiceBullet>().QueueAnchorPoint);
+            newDice.SetQueueState(queuedDices[queuedDices.Count - 1].QueueAnchorPoint);
         }
 
-        queuedDices.Add(newDice.gameObject);
+        queuedDices.Add(newDice);
     }
 
-    public void PopLastElement()
+    public void Hit()
+    {
+        AudioManager.Instance.PlayFX_hitPlayer();
+        PopLastElement();
+    }
+
+    void PopLastElement()
     {
         if (queuedDices.Count <= 0)
         {
@@ -226,19 +238,13 @@ public class Player : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayFX_hitPlayer();
-
             var dice = queuedDices[0];
-            if (queuedDices.Count == 1)
+            if (queuedDices.Count > 1)
             {
-                Destroy(dice.gameObject);
-            }
-            else
-            {
-                queuedDices[1].GetComponent<DiceBullet>().SetQueueState(trailTarget);
-                Destroy(dice.gameObject);
+                queuedDices[1].SetQueueState(trailTarget);
             }
             queuedDices.RemoveAt(0);
+            Destroy(dice.gameObject);
         }
     }
 
@@ -251,9 +257,10 @@ public class Player : MonoBehaviour
         AudioManager.Instance.PlayFX_koPlayer();
         GameManager.Instance.SetTimeScale(.1f);
 
-        LeanTween.value(gfx.gameObject, 1f, 0f, .4f).setOnUpdate((float val) => {
+        LeanTween.value(gfx.gameObject, 1f, 0f, .4f).setOnUpdate((float val) =>
+        {
             gfx.material.SetFloat("_Alpha", val);
-            
+
             parryRechargeMat.SetFloat("_Alpha", val);
 
             var colorApp = aura.color;
