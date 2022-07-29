@@ -18,6 +18,10 @@ public class SplinePlacer : PathSceneTool
 
     [SerializeField]
     private float minionSpeed = 5f;
+
+    [SerializeField]
+    EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop;
+
     public float MinionSpeed { get => minionSpeed; }
     
     const float minSpacing = .1f;
@@ -64,6 +68,7 @@ public class SplinePlacer : PathSceneTool
                     var obj = Instantiate(prefabs[index], point, rot, holder.transform);
                     Follower follower = obj.GetComponent<Follower>();
                     follower.SetPath(this);
+                    follower.endOfPathInstruction = endOfPathInstruction;
                 }
 
                 dst += spacing;

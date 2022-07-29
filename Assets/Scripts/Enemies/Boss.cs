@@ -14,16 +14,19 @@ public class Boss : MonoBehaviour
     [SerializeField] List<Transform> presetFour = new List<Transform>();
 
     [SerializeField] Material bossMat;
+    [SerializeField] GameObject circleBG;
 
     [Header("Custom Attributes")]
     [SerializeField, Range(1, 4)]
     int numberOfDices = 1;
 
-    float hitDuration = .4f;
+    const float hitDuration = .4f;
+    float deathDuration { get => hitDuration * 2f; }
 
     private void Start()
     {
         InitDices();
+        bossMat.SetFloat("_FadeAmount", 0f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +47,7 @@ public class Boss : MonoBehaviour
             {
                 for (int i = 0; i < dices.Count; i++)
                 {
-                    if(DiceData.AreEquals(dice, dices[i].DiceData))
+                    if (DiceData.AreEquals(dice, dices[i].DiceData))
                     {
                         AudioManager.Instance.PlayFX_hitBoss();
                         HitAnimation();
@@ -68,7 +71,19 @@ public class Boss : MonoBehaviour
     {
         AudioManager.Instance.PlayFX_koBoss();
 
-        yield return Timing.WaitForSeconds(hitDuration * 2f);
+        LeanTween.value(gameObject, 0f, 1f, deathDuration).setOnUpdate((float val) =>
+        {
+            bossMat.SetFloat("_FadeAmount", val * .9f);
+        });
+
+        LeanTween.value(gameObject, 0f, 1f, deathDuration * .8f).setOnUpdate((float val) =>
+        {
+            circleBG.transform.localScale = Vector3.one * (1 - val);
+        }).setEaseInCubic();
+
+        GameManager.Instance.SetTimeScale(.5f);
+
+        yield return Timing.WaitForSeconds(deathDuration);
 
         GameManager.Instance.LoadNextScene();
         yield break;
@@ -76,10 +91,12 @@ public class Boss : MonoBehaviour
 
     void HitAnimation()
     {
-        LeanTween.value(gameObject, -.1f, .1f, hitDuration).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, 0f, .1f, hitDuration).setOnUpdate((float val) =>
+        {
             bossMat.SetFloat("_FadeAmount", val);
         }).setOnComplete(() =>
-        LeanTween.value(gameObject, .1f, -.1f, hitDuration).setOnUpdate((float val) => {
+        LeanTween.value(gameObject, .1f, 0f, hitDuration).setOnUpdate((float val) =>
+        {
             bossMat.SetFloat("_FadeAmount", val);
         })
         );

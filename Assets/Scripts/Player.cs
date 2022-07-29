@@ -72,6 +72,9 @@ public class Player : MonoBehaviour
     {
         const float leanTime = .2f;
 
+        if (!hasController)
+            return;
+
         if (inputManager.Horizontal.HasChanged)
         {
             LeanTween.cancel(horizontalTweenId);
@@ -257,14 +260,13 @@ public class Player : MonoBehaviour
         AudioManager.Instance.PlayFX_koPlayer();
         GameManager.Instance.SetTimeScale(.1f);
 
-        LeanTween.value(gfx.gameObject, 1f, 0f, .4f).setOnUpdate((float val) =>
+        LeanTween.value(gfx.gameObject, 0f, 1f, .4f).setOnUpdate((float val) =>
         {
-            gfx.material.SetFloat("_Alpha", val);
-
-            parryRechargeMat.SetFloat("_Alpha", val);
+            gfx.material.SetFloat("_FadeAmount", val);
+            parryRechargeMat.SetFloat("_FadeAmount", val);
 
             var colorApp = aura.color;
-            colorApp.a = val;
+            colorApp.a = 1 - val;
             aura.color = colorApp;
         }).setIgnoreTimeScale(true);
 

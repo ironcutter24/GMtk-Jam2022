@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 5593115462087007612}
   - component: {fileID: 5593115462087007615}
   m_Layer: 6
-  m_Name: Circle
+  m_Name: CircleMat1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,6 @@ MonoBehaviour:
   FourSidesPrefabs: {fileID: 1573981602161402768, guid: 9f0ce60dec08a15418797a9991a7300a, type: 3}
   SixSidesPrefab: {fileID: 9168078472234701073, guid: 87313bf501efc244cbb94f03e1343c1e, type: 3}
   EightSidesPrefab: {fileID: 8457588816571343767, guid: b734736ce9a542146be600a1b9b6eede, type: 3}
-  numberOfDices: 1
   presetTwo:
   - {fileID: 4745402672382582887}
   - {fileID: 6505044204681331338}
@@ -399,8 +398,9 @@ MonoBehaviour:
   - {fileID: 2783978158692001138}
   - {fileID: 569954003003335775}
   - {fileID: 8409086434937856218}
-  dices: []
   bossMat: {fileID: 2100000, guid: 3241ea466d4f8334898daf420de4026b, type: 2}
+  circleBG: {fileID: 9128896103687219338}
+  numberOfDices: 1
 --- !u!1 &5593115462211827404
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 5593115462211827407}
   - component: {fileID: 5593115462211827406}
   m_Layer: 6
-  m_Name: Circle (1)
+  m_Name: CircleMat2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,8 +429,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
-  m_Father: {fileID: 7453494770840959597}
-  m_RootOrder: 1
+  m_Father: {fileID: 7107621790393663445}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5593115462211827406
 SpriteRenderer:
@@ -605,7 +605,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5593115462087007613}
-  - {fileID: 5593115462211827407}
+  - {fileID: 7107621790393663445}
   m_Father: {fileID: 5593115462177197971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -638,6 +638,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3186064717747966244}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9128896103687219338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7107621790393663445}
+  m_Layer: 6
+  m_Name: CircleBG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7107621790393663445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9128896103687219338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5593115462211827407}
+  m_Father: {fileID: 7453494770840959597}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9199389471042209387
 GameObject:
