@@ -15,9 +15,9 @@
 - Esc **>>** Quit
 
 ### Team:
+- [Damiano Borsa](https://itch.io/profile/damianoborsa) **>>** Design, Level design
 - [ironcutter24](https://itch.io/profile/ironcutter24) **>>** Design, Programming, Music
 - [Karcin0](https://itch.io/profile/karcin0) **>>** Design, Graphics, Sounds
-- [Damiano Borsa](https://itch.io/profile/damianoborsa) **>>** Design, Level design
 
 ### Links:
 - Download for Windows on [itch.io](https://ironcutter24.itch.io/dice-em-up)
